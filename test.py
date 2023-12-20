@@ -3,14 +3,20 @@ import argparse
 from data_processing import Data_Generator, load_dataset
 from torch.utils.data import DataLoader
 
-def main(model_path, image_folder):    
+def main():   
+    parser = argparse.ArgumentParser(description='Test a trained model')
+    parser.add_argument('--model-path', type=str, required=True, help='Path to the trained model')
+    parser.add_argument('--image-folder', type=str, help='Path to the folder containing total images')
+
+    args = parser.parse_args()
+    
     # Load the model
-    model = torch.load(model_path)
+    model = torch.load(args.model_path)
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     
-    _, _, test_data_loader = load_dataset(image_folder, 0.8, 1)
+    _, _, test_data_loader = load_dataset(args.image_folder, 0.8, 1)
 
     threshold = 5.0
     model.eval()
@@ -44,9 +50,4 @@ def main(model_path, image_folder):
         print(f"Test ACP: {accuracy:.4f}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Test a trained model')
-    parser.add_argument('--model-path', type=str, required=True, help='Path to the trained model')
-    parser.add_argument('--image-folder', type=str, help='Path to the folder containing images for testing')
-
-    args = parser.parse_args()
-    main(args.model_path, args.image_folder)
+    main()
