@@ -103,7 +103,7 @@ def main():
     parser.add_argument('--num-conv-layers', type=int, default=1, choices=range(1, 5),
                         help='Select the number of convolutional layers for CustomCNN (1-4)')
     parser.add_argument('--curriculum', action='store_true', help='Apply curriculum learning')
-    parser.add_argument('--image-folder', type=str, help='Path to the folder containing images for training and validation')
+    parser.add_argument('--image-folder', type=str, help='Path to the folder containing total images')
     parser.add_argument('--ground-truth-folder', type=str, help='Path to the folder containing ground truth data')
     parser.add_argument('--learning-rate', type=float, default=0.001, help='Learning rate for training')
     parser.add_argument('--weight-decay', type=float, default=0.0, help='Weight decay for regularization')
