@@ -16,7 +16,7 @@ The dataset consists of images in TIFF format and corresponding CSV files each r
 - **Flags**:
   - `--model`: Choose from ['CustomCNN', 'AlexNet', 'ResNet', 'VisionTransformer'] for model selection.
   - `--num-conv-layers`: Select the number of convolutional layers for CustomCNN (1-4).
-  - `--curriculum`: Apply curriculum learning.
+  - `--curriculum`: Apply curriculum learning (default: False).
   - `--image-folder`: Path to the folder containing total images.
   - `--ground-truth-folder`: Path to the folder containing ground truth data.
   - `--learning-rate`: Learning rate for training (default: 0.001).
@@ -75,7 +75,7 @@ The dataset consists of images in TIFF format and corresponding CSV files each r
 ## Usage Example
 Training with CustomCNN:
 
-python train.py --model CustomCNN --num-conv-layers 3 --curriculum --image-folder path/to/images --ground-truth-folder path/to/ground_truth --learning-rate 0.001 --batch-size 32 --epochs 15 --patience 5
+python train.py --model CustomCNN --num-conv-layers 3 --curriculum True --image-folder path/to/images --ground-truth-folder path/to/ground_truth --learning-rate 0.001 --batch-size 32 --epochs 15 --patience 5
 
 Please replace 'path/to/images' and 'path/to/ground_truth' with the actual paths to your image and ground truth folders, respectively. Adjust the usage example as per your requirements and folder structure.
 
